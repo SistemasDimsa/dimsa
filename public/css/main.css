@@ -1,4 +1,4 @@
-/*! HTML5 Boilerplate v5.2.0 | MIT License | https://html5boilerplate.com/ */
+/*! HTML5 Boilerplate v5.0.0 | MIT License | http://h5bp.com/ */
 
 /*
  * What follows is the result of much research on cross-browser styling.
@@ -117,10 +117,12 @@ textarea {
 
 /*
  * Hide visually and from screen readers:
+ * http://juicystudio.com/article/screen-readers-display-none.php
  */
 
 .hidden {
     display: none !important;
+    visibility: hidden;
 }
 
 /*
@@ -196,8 +198,8 @@ textarea {
 }
 
 @media print,
+       (-o-min-device-pixel-ratio: 5/4),
        (-webkit-min-device-pixel-ratio: 1.25),
-       (min-resolution: 1.25dppx),
        (min-resolution: 120dpi) {
     /* Style adjustments for high resolution devices */
 }
@@ -277,4 +279,68 @@ textarea {
     h3 {
         page-break-after: avoid;
     }
+}
+
+/******************** estilos del sistema ******************************/
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin-bottom: 100px;
+}
+
+footer {
+    position: absolute;
+    margin-top: 10px;
+    bottom: 0;
+    height: 40px;
+    width: 100%;
+    background: #222;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.loading-table{
+    height:400px;
+    position:relative;
+}
+
+.loading{
+    height:100%;
+    position:relative;
+}
+
+.grilla tbody tr {
+    cursor: pointer;
+}
+
+.refresh-container {
+    position:absolute;
+    top:0;
+    right:0;
+    background:rgba(200,200,200,0.25);
+    width:100%;
+    height:100%;
+    display: none;
+    text-align:center;
+    z-index:4;
+}
+
+.refresh-container-table {
+    position:absolute;
+    top:0;
+    right:0;
+    background:rgba(200,200,200,0.25);
+    width:100%;
+    height:100%;
+    display: none;
+    text-align:center;
+    z-index:4;
+}
+
+.refresh-spinner {
+    margin: auto;
+    opacity: 0.8;
 }

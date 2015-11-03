@@ -835,7 +835,7 @@ class PHPMailer
     /**
      * Add an address to one of the recipient arrays or to the ReplyTo array. Because PHPMailer
      * can't validate addresses with an IDN without knowing the PHPMailer::$CharSet (that can still
-     * be modified after calling this function), addition of such addresses is delayed until send().
+     * modified after calling this function), addition of such addresses is delayed until send().
      * Addresses that have been added already return false, but do not throw exceptions.
      * @param string $kind One of 'to', 'cc', 'bcc', or 'ReplyTo'
      * @param string $address The email address to send, resp. to reply to
@@ -3025,13 +3025,21 @@ class PHPMailer
      * @param string $kind 'to', 'cc', or 'bcc'
      * @return void
      */
-    public function clearQueuedAddresses($kind)
+    protected function clearQueuedAddresses($kind)
     {
-        $RecipientsQueue = $this->RecipientsQueue;
-        foreach ($RecipientsQueue as $address => $params) {
-            if ($params[0] == $kind) {
-                unset($this->RecipientsQueue[$address]);
+        if (version_compare(PHP_VERSION, '5.3.0', '<')) {
+            $RecipientsQueue = $this->RecipientsQueue;
+            foreach ($RecipientsQueue as $address => $params) {
+                if ($params[0] == $kind) {
+                    unset($this->RecipientsQueue[$address]);
+                }
             }
+        } else {
+            $this->RecipientsQueue = array_filter(
+                $this->RecipientsQueue,
+                function ($params) use ($kind) {
+                    return $params[0] != $kind;
+                });
         }
     }
 

@@ -39,7 +39,7 @@ $provider = new League\OAuth2\Client\Provider\Google(
 if (!isset($_GET['code'])) {
     // If we don't have an authorization code then get one
     $authUrl = $provider->getAuthorizationUrl();
-    $_SESSION['oauth2state'] = $provider->getState();
+    $_SESSION['oauth2state'] = $provider->state;
     header('Location: ' . $authUrl);
     exit;
 // Check given state against previously stored one to mitigate CSRF attack
@@ -59,7 +59,7 @@ if (!isset($_GET['code'])) {
     //    echo $token->accessToken.'<br>';
 
     // Use this to get a new access token if the old one expires
-    echo 'Refresh Token: ' . $token->getRefreshToken();
+    echo 'Refresh Token: ' . $token->refreshToken;
 
     // Unix timestamp of when the token will expire, and need refreshing
     //    echo $token->expires;

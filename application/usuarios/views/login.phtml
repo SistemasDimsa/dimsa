@@ -1,0 +1,73 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title><?= APP_NAME ?></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="<?= BASEURL ?>public/css/normalize.css">
+        <link rel="stylesheet" href="<?= BASEURL ?>public/css/bootstrap.min.css">
+        <link rel="stylesheet" href="<?= BASEURL ?>public/css/font-awesome.min.css">
+        <link rel="stylesheet" href="<?= BASEURL ?>public/css/main.css">
+        <script src="<?= BASEURL ?>public/js/vendor/modernizr.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- header -->
+        <?php require_once BASEPATH . 'core' . DIRECTORY_SEPARATOR . 'Layout.php'; ?>
+        <!-- fin header -->
+        
+        <!-- contenedor principal -->
+        <section class="container-fluid">
+            <article>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title">Iniciar Sesión</h2>
+                        </div>
+                        <div class="modal-body">
+                            <div class="alert alert-info" id="msjLogin">
+                                Ingresa tus datos de acceso
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    <form action="" method="post" name="loginForm" id="loginForm">
+                                        <label for="usuario" class="control-label">Usuario</label>
+                                        <input type="text" name="usuario" id="usuario" class="form-control" autofocus="true">
+                                        <label for="contrasena" class="control-label">Contraseña</label>
+                                        <input type="password" name="contrasena" id="contrasena" class="form-control">
+                                        <br>
+                                        <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+                                    </form>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+        <!-- fin contenedor principal -->
+        <!--footer  -->
+        <?php $layout->footer(); ?>
+        <!-- fin footer -->
+        
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="<?= BASEURL ?>public/js/vendor/jquery.min.js"><\/script>')</script>
+        <script src="<?= BASEURL ?>public/js/bootstrap.min.js"></script>
+        <script src="<?= BASEURL ?>public/js/utf8_encode.js"></script>
+        <script src="<?= BASEURL ?>public/js/md5.js"></script>
+        <script src="<?= BASEURL ?>public/js/main.js"></script>
+        <script src="<?= BASEURL ?>application/usuarios/js/Usuarios.js"></script>
+    </body>
+</html>
