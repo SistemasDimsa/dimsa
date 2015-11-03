@@ -25,6 +25,28 @@ class DAO {
     }
     
     private function __construct(){
+        try{
+            $this->_dbh = new PDO($this->_dsn, $this->_usuario, $this->_contrasena);
+            $this->_dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->_dbh->exec("SET CHARACTER SET utf8");
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }
+    }
+    
+    public function obtenerConexion(){
+        if ($this->_dbh === NULL){
+            self::obtenerInstancia();
+        }
         
+        return $this->_dbh;
+    }
+    
+    public function cerrarConexion(){
+        $this->_dbh = NULL;
+    }
+    
+    public function __destruct(){
+        $this->cerrarConexion();
     }
 }
